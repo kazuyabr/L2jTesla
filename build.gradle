@@ -1,6 +1,7 @@
 buildscript {
     repositories {
         jcenter()
+        mavenCentral()
     }
 }
 
@@ -12,10 +13,10 @@ plugins {
 
 wrapper { gradleVersion = '6.0' }
 
-group 'dev.l2j.tesla.autobots'
+group 'src.main.java'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 13
+sourceCompatibility = 11
 
 repositories {
     jcenter()
@@ -23,14 +24,15 @@ repositories {
 }
 
 dependencies {
-    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.10.+"
-    compile "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.10.+"
-    compile group: 'com.zaxxer', name: 'HikariCP', version: '3.4.2'
-    compile group: 'com.mchange', name: 'mchange-commons-java', version: '0.2.6.2'
-    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
-    compile group: 'org.mindrot', name: 'jbcrypt', version: '0.4'
-    compile group: 'org.reflections', name: 'reflections', version: '0.9.12'
-    compile group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-jdk8', version: '1.3.5'
+    implementation fileTree(dir: 'lib', include: '*.jar')
+    implementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.10.+"
+    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.10.+"
+    implementation group: 'com.zaxxer', name: 'HikariCP', version: '3.4.2'
+    implementation group: 'com.mchange', name: 'mchange-commons-java', version: '0.2.6.2'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
+    implementation group: 'org.mindrot', name: 'jbcrypt', version: '0.4'
+    implementation group: 'org.reflections', name: 'reflections', version: '0.9.12'
+    implementation group: 'org.jetbrains.kotlinx', name: 'kotlinx-coroutines-jdk8', version: '1.3.5'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.5'
 }
@@ -45,7 +47,6 @@ compileTestKotlin {
         jvmTarget = "1.8"
     }
 }
-
 shadowJar{
-    archiveFileName = "l2jtesla.${extension}"
+    archiveFileName = "l2jtesla.jar"
 }
